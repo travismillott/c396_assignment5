@@ -1,11 +1,15 @@
-/* Make player1 and player2 global variables */
+//* Make player1 and player2 global variables */
+// rule - no removing/adding to self
+// situation superko, no repeated situations depending on player
+// allow symmetry in superko situations, no splitting in case of symmetry
+
 
 def main():
 	//call the start of the game and stuff
   bool player1_turn = False 
   player1 = Player()
   player2 = Player()
-  //instructions printed
+  print_instructions()
   while True:
   	/* plays game */
     //turn is swapped
@@ -31,18 +35,16 @@ def main():
     
     printhands()
     Player 2		( R )			( L )
-    						   |\			   \
      		 				  2			 		1
                   
-    						||||
-    Player 1		( L )			(R)
-     		 				 4			 0
+    Player 1		( L )			( R )
+     		 				  4			 		0
      
      Player 2's turn.
      >>left to left
      >>best_move //prints out current player's best move
 
-def touch_opposing(hand_self, hand_opposing):
+def touch_opposing(hand_self,hand_opposing):
 	/* hand_self is the hand the current player is using */
   /* hand_opposing is the hand of the opposing player that self is touching */
   /* checks if move is illegal e.i if either hand is 0 */
@@ -61,12 +63,14 @@ def game_over_check():
 	//check hands of both players to determine if the game is over
   //if a player has two empty hands then the other player is the winner 
   	//prints a winner message (who won), then checks if replay (if so prints the instructions and resets the game)
+  //check if situational superko
 
 def print_hands()
 	//show hands as digits for both hands, repeat for both players
   //           P1             P2
 
-
+def print_instructions():
+	//prints the game's instructions
 
 ///////////////////////////////////
 
@@ -75,7 +79,7 @@ class Player():
   	self.left_hand = 1
 	  self.right_hand = 1
     
-  add(hand_opposing, hand_self, self):
+  def add(hand_opposing, hand_self, self):
   	//hand_opposing is the number of fingers of the opposing players hand
     //hand_self is the hand the opposing player touched (left or right)
     
@@ -88,4 +92,7 @@ class Player():
     	self.righthand += hand_opposing
       if self.righthand > 4:
       	self.righthand = 0
+  
+  def setLeft // for algo
+  def setRight // for algo
     
